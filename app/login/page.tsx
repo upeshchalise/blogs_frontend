@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 const LoginSchema = z.object({
     email: z.string().email("Invalid email address"),
-    password: z.string().min(8, "Password must be at least 8 characters long"),
+    password: z.string(),
 });
 
 const Login = () => {
@@ -32,9 +32,11 @@ const Login = () => {
                 <h3 className="font-semibold text-lg">Welcome back</h3>
                 <form className="flex flex-col gap-4 p-4 w-4/5" onSubmit={handleSubmit(onSubmit)}>
                     <Input type="email" placeholder="Email" className="border border-gray-300 rounded-md p-2 !text-lg h-fit" {...register("email")} />
+                    {errors.email && <span className="text-red-500">{errors.email.message}</span>}
                     <Input type="password" placeholder="Password" className="border border-gray-300 rounded-md p-2 !text-lg h-fit" {...register("password")}/>
+                    {errors.password && <span className="text-red-500">{errors.password.message}</span>}
                     <button type="submit" className="bg-blue-500 text-white rounded-md p-2 hover:bg-blue-600 transition duration-200 !text-lg">
-                        Sign Up
+                        Login
                     </button>
                     <p className="text-sm text-gray-500">
                         Don't have an account? <a href="/signup" className="text-blue-500 hover:underline">Sign up</a>
