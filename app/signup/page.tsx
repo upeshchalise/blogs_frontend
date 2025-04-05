@@ -6,10 +6,10 @@ import { useForm } from "react-hook-form";
 import {z} from "zod";
 
 const SignupSchema = z.object({
-    firstName: z.string().min(3, "First name is required"),
-    lastName: z.string().min(3, "Last name is required"),
-    email: z.string().email("Invalid email address"),
-    password: z.string().min(8, "Password must be at least 8 characters long"),
+    firstName: z.string().nonempty("first name is required").min(3, "First name is required"),
+    lastName: z.string().nonempty("last name is required").min(3, "Last name is required"),
+    email: z.string().nonempty("email is required").email("Invalid email address"),
+    password: z.string().nonempty("password is required").min(8, "Password must be at least 8 characters long"),
 });
 
 const Signup = () => {

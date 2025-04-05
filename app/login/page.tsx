@@ -4,8 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 const LoginSchema = z.object({
-    email: z.string().email("Invalid email address"),
-    password: z.string(),
+    email: z.string().nonempty("Email is required").email("Invalid email address"),
+    password: z.string().nonempty("Password is required").min(8, "Password must be at least 8 characters long"),
 });
 
 const Login = () => {
