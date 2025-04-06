@@ -31,9 +31,9 @@ const Login = () => {
             <div className=" w-full lg:w-[60%] flex flex-col items-center rounded-r-xl py-5">
                 <h3 className="font-semibold text-lg">Welcome back</h3>
                 <form className="flex flex-col gap-4 p-4 w-4/5" onSubmit={handleSubmit(onSubmit)}>
-                    <Input type="email" placeholder="Email" className="border border-gray-300 rounded-md p-2 !text-lg h-fit" {...register("email")} />
+                    <Input type="email" placeholder="Email" className={`focus-visible:border focus-visible:border-blue-400 focus-visible:ring-0 border border-gray-300 rounded-md p-2 !text-lg h-fit ${errors.email && "border border-red-500"}`} {...register("email")} />
                     {errors.email && <span className="text-red-500">{errors.email.message}</span>}
-                    <Input type="password" placeholder="Password" className="border border-gray-300 rounded-md p-2 !text-lg h-fit" {...register("password")}/>
+                    <Input type="password" placeholder="Password" className={`focus-visible:border focus-visible:border-blue-400 focus-visible:ring-0 border border-gray-300 rounded-md p-2 !text-lg h-fit ${errors.password && "border border-red-500"}`} {...register("password")}/>
                     {errors.password && <span className="text-red-500">{errors.password.message}</span>}
                     <button type="submit" className="bg-blue-500 text-white rounded-md p-2 hover:bg-blue-600 transition duration-200 !text-lg">
                         Login
