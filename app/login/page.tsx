@@ -1,7 +1,12 @@
 "use client"
 import { Input } from "@/components/ui/input";
+import { login } from "@/lib/api/blogs/api";
+import { loginUser } from "@/lib/types/user";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 const LoginSchema = z.object({
     email: z.string().nonempty("Email is required").email("Invalid email address"),
@@ -9,6 +14,7 @@ const LoginSchema = z.object({
 });
 
 const Login = () => {
+    const router = useRouter();
 
     const { register, handleSubmit, formState: { errors } } = useForm<z.infer<typeof LoginSchema>>({
         resolver: zodResolver(LoginSchema),
@@ -17,8 +23,23 @@ const Login = () => {
             password: "",
         }
     })
-    const onSubmit = (data: z.infer<typeof LoginSchema>) => {
-        console.log(data);
+
+
+    const userLoginMutation = useMutation({
+        mutationFn: login,
+        onSuccess: (data:loginUser) => {
+            console.log("User logged in successfully:", data);
+            toast.success("User logged in successfully");
+            router.push("/");
+        },
+        onError: (error) => {
+            console.error("Error logging in:", error);
+            toast.error("Error logging in");
+        }
+    })
+
+    const onSubmit = async (data: z.infer<typeof LoginSchema>) => {
+        await userLoginMutation.mutateAsync(data)
     }
 
     return (

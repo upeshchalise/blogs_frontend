@@ -10,8 +10,8 @@ import { z } from "zod";
 import { useRouter } from "next/navigation";
 
 const SignupSchema = z.object({
-    firstName: z.string().nonempty("first name is required").min(3, "First name is required"),
-    lastName: z.string().nonempty("last name is required").min(3, "Last name is required"),
+    first_name: z.string().nonempty("first name is required").min(3, "First name is required"),
+    last_name: z.string().nonempty("last name is required").min(3, "Last name is required"),
     email: z.string().nonempty("email is required").email("Invalid email address"),
     password: z.string().nonempty("password is required").min(8, "Password must be at least 8 characters long"),
 });
@@ -22,8 +22,8 @@ const Signup = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<z.infer<typeof SignupSchema>>({
         resolver: zodResolver(SignupSchema),
         defaultValues: {
-            firstName: "",
-            lastName: "",
+            first_name: "",
+            last_name: "",
             email: "",
             password: "",
         }
@@ -55,10 +55,10 @@ const Signup = () => {
                 <div className=" w-full lg:w-[60%] flex flex-col items-center rounded-r-xl py-5">
                     <h3 className="font-semibold text-lg">Create an account</h3>
                     <form className="flex flex-col gap-4 p-4 w-4/5" onSubmit={handleSubmit(onSubmit)}>
-                        <Input type="text" placeholder="First Name" className={`focus-visible:border focus-visible:border-blue-400 focus-visible:ring-0 border border-gray-300 rounded-md p-2 !text-lg h-fit ${errors.firstName && "border border-red-500"}`} {...register("firstName")} />
-                        {errors.firstName && <span className="text-red-500">{errors.firstName.message}</span>}
-                        <Input type="text" placeholder="Last Name" className={`focus-visible:border focus-visible:border-blue-400 focus-visible:ring-0 border border-gray-300 rounded-md p-2 !text-lg h-fit ${errors.lastName && "border border-red-500"}`} {...register("lastName")} />
-                        {errors.lastName && <span className="text-red-500">{errors.lastName.message}</span>}
+                        <Input type="text" placeholder="First Name" className={`focus-visible:border focus-visible:border-blue-400 focus-visible:ring-0 border border-gray-300 rounded-md p-2 !text-lg h-fit ${errors.first_name && "border border-red-500"}`} {...register("first_name")} />
+                        {errors.first_name && <span className="text-red-500">{errors.first_name.message}</span>}
+                        <Input type="text" placeholder="Last Name" className={`focus-visible:border focus-visible:border-blue-400 focus-visible:ring-0 border border-gray-300 rounded-md p-2 !text-lg h-fit ${errors.last_name && "border border-red-500"}`} {...register("last_name")} />
+                        {errors.last_name && <span className="text-red-500">{errors.last_name.message}</span>}
                         <Input type="email" placeholder="Email" className={`focus-visible:border focus-visible:border-blue-400 focus-visible:ring-0 border border-gray-300 rounded-md p-2 !text-lg h-fit ${errors.email && "border border-red-500"}`} {...register("email")} />
                         {errors.email && <span className="text-red-500">{errors.email.message}</span>}
                         <Input type="password" placeholder="Password" className={`focus-visible:border focus-visible:border-blue-400 focus-visible:ring-0 border border-gray-300 rounded-md p-2 !text-lg h-fit ${errors.password && "border border-red-500"}`} {...register("password")} />
