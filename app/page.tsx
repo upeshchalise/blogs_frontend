@@ -42,7 +42,7 @@ export default function Home() {
                 <CardFooter className="text-gray-500 flex justify-between items-center text-sm">
                   <div className="flex items-center gap-2">
                     <Folder />
-                    productivity
+                    {}
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock />

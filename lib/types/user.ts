@@ -16,7 +16,12 @@ export interface UserSignup {
     password: string;
 }
 
+export interface Tokens {
+    access_token: string;
+    refresh_token: string
+}
+
 export interface loginUser {
-    token: string;
+    token: Tokens
     user: User;
 }

@@ -8,12 +8,17 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
+import { useUserStore } from "@/lib/stores/user-store";
 const LoginSchema = z.object({
     email: z.string().nonempty("Email is required").email("Invalid email address"),
     password: z.string().nonempty("Password is required").min(8, "Password must be at least 8 characters long"),
 });
 
 const Login = () => {
+
+
+    const { setUser} = useUserStore(); 
+    // console.log("user:", user);
     const router = useRouter();
 
     const { register, handleSubmit, formState: { errors } } = useForm<z.infer<typeof LoginSchema>>({
@@ -28,6 +33,17 @@ const Login = () => {
     const userLoginMutation = useMutation({
         mutationFn: login,
         onSuccess: (data:loginUser) => {
+        
+            setUser({token: {
+                access_token: data.token.access_token,
+                refresh_token: data.token.refresh_token},
+            user: {
+                id: data.user.id,
+                first_name: data.user.first_name,
+                last_name: data.user.last_name,
+                email: data.user.email
+            }
+        })
             console.log("User logged in successfully:", data);
             toast.success("User logged in successfully");
             router.push("/");
