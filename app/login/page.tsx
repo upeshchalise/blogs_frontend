@@ -41,7 +41,8 @@ const Login = () => {
                 id: data.user.id,
                 first_name: data.user.first_name,
                 last_name: data.user.last_name,
-                email: data.user.email
+                email: data.user.email,
+                image: data.user.image
             }
         })
             console.log("User logged in successfully:", data);

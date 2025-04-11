@@ -32,7 +32,8 @@ export const defaultUserState : AuthenticatedUser = {
         id: '',
         first_name: '',
         last_name: '',
-        email: ''
+        email: '',
+        image: ''
     }
 }
 

@@ -3,6 +3,7 @@ export interface User {
     first_name: string;
     last_name: string;
     email: string;
+    image: string;
 }
 
 export interface UserLogin {
@@ -24,4 +25,14 @@ export interface Tokens {
 export interface loginUser {
     token: Tokens
     user: User;
+}
+
+export interface BlogDetails {
+    id: string;
+    title: string;
+    content: string;
+    banner: string;
+    user: User;
+    claps: number;
+    created_at: string;
 }
