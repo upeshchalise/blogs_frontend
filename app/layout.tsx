@@ -4,6 +4,7 @@ import "./globals.css";
 import { ReactQueryClientProvider } from "@/components/react-query-client-provider";
 import { Toaster } from "@/components/ui/sonner"
 import UserStoreProvider from "@/lib/providers/user-provider";
+import { Header } from "@/components/common/Header";
 
 
 const geistSans = Geist({
@@ -34,9 +35,12 @@ export default function RootLayout({
     <ReactQueryClientProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased p-4`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <UserStoreProvider>
+          <div className="sticky top-0 z-50 bg-white shadow-lg text-black">
+          <Header />
+        </div>
             {children}
           </UserStoreProvider>
           <Toaster position="top-right" duration={3000} />
