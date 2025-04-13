@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { Input } from "@/components/ui/input";
 import { useQuery } from "@tanstack/react-query";
 import { getBlogs } from "@/lib/api/blogs/api";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -26,7 +25,6 @@ export default function Home() {
           <p>Discover insights, stories, and trends in technology, design, and more.</p>
         </div>
         <div>
-          <Input placeholder="Search blogzz" className="w-1/2 mx-auto" />
 
           {isLoading && <p className="text-center">Loading...</p>}
           {isError && <p className="text-center">Error fetching blogs</p>}
