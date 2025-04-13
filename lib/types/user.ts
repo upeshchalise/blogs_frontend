@@ -35,4 +35,5 @@ export interface BlogDetails {
     user: User;
     claps: number;
     created_at: string;
+    comments: string[] | null
 }
