@@ -35,7 +35,7 @@ export default function Home() {
                   <CardContent className="!px-0 flex flex-col gap-4">
                     <img src={blog.banner ? blog.banner : "/banner.avif"} alt={blog.title} className="w-full h-48 object-cover rounded-t-xl" />
                     <div className="px-6">
-                      <h2 className="text-xl font-bold">{blog.title}</h2>
+                      <h2 className="text-xl font-bold line-clamp-2" title={blog.title}>{blog.title}</h2>
                       <p className="text-gray-600 line-clamp-2">{blog.content}</p>
                       {/* <a href={`/blogs/${blog.id}`} className="text-blue-500 hover:underline">Read more</a> */}
                     </div>
