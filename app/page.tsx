@@ -33,7 +33,7 @@ export default function Home() {
               <Link href={`/blogs/${blog.id}`} key={blog.id}>
                 <Card className="shadow-sm hover:shadow-xl transition-shadow duration-300 !pt-0 !gap-4">
                   <CardContent className="!px-0 flex flex-col gap-4">
-                    <img src={blog.banner} alt={blog.title} className="w-full h-48 object-cover rounded-t-xl" />
+                    <img src={blog.banner ? blog.banner : "/banner.avif"} alt={blog.title} className="w-full h-48 object-cover rounded-t-xl" />
                     <div className="px-6">
                       <h2 className="text-xl font-bold">{blog.title}</h2>
                       <p className="text-gray-600 line-clamp-2">{blog.content}</p>

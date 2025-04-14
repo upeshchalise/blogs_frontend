@@ -26,9 +26,9 @@ const BlogDetails = () => {
 
     return (
         <>
-            <section id="blog-details" className="w-full py-5">
+            <section id="blog-details" className="w-full py-5 bg-white">
                 <div className="w-full md:w-3/4 mx-auto flex flex-col gap-5">
-                    <Image src={data?.banner ? data?.banner : "/banner.avif"} width={800} height={400} alt={data?.title ? data?.title : 'banner image of blog'} />
+                    <Image src={data?.banner ? data?.banner : "/banner.avif"} className="object-cover w-full md:h-[500px] h-auto rounded-t-2xl" width={400} height={300} alt={data?.title ? data?.title : 'banner image of blog'} />
                     <div className="px-5 flex flex-col gap-5">
 
                         <div className="flex items-center gap-4">

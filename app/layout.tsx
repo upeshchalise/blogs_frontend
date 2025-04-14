@@ -5,6 +5,7 @@ import { ReactQueryClientProvider } from "@/components/react-query-client-provid
 import { Toaster } from "@/components/ui/sonner"
 import UserStoreProvider from "@/lib/providers/user-provider";
 import { Header } from "@/components/common/Header";
+import { Footer } from "@/components/common/Footer";
 
 
 const geistSans = Geist({
@@ -35,13 +36,14 @@ export default function RootLayout({
     <ReactQueryClientProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col gap-5`}
         >
           <UserStoreProvider>
           <div className="sticky top-0 z-50 bg-white shadow-lg text-black">
           <Header />
         </div>
             {children}
+            <Footer />
           </UserStoreProvider>
           <Toaster position="top-right" duration={3000} />
         </body>
