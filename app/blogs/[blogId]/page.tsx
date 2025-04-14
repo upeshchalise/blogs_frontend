@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import dayjs from "dayjs";
 import { Bookmark, MessageSquareText, Share } from "lucide-react";
 import { PiHandsClappingBold } from "react-icons/pi";
+import { Categories } from "@/lib/types/user";
 
 
 const BlogDetails = () => {
@@ -59,9 +60,12 @@ const BlogDetails = () => {
                         </div>
                         <hr />
 
-                        <div>
+                        <div className="flex flex-col gap-5">
                             <h1 className="font-bold text-4xl">{data?.title}</ h1>
-                            <p>{data?.content}</p>
+                            {!!data?.categories ? data?.categories.map((category: Categories) => (
+                                <h2 key={category?.id} className="font-medium">#{category?.name}</h2>
+                            )) : null}
+                            <p className=" text-lg">{data?.content}</p>
                         </div>
                     </div>
                 </div>

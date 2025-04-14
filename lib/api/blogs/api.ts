@@ -1,7 +1,7 @@
 import axiosInstance from "@/lib/axios";
 import { BlogDetails, loginUser, UserLogin, UserSignup } from "@/lib/types/user";
 
-export const getBlogs = async () => {
+export const getBlogs = async ():Promise<BlogDetails[]> => {
     const {data} = await axiosInstance.get("/blogs");
     return data;
 }

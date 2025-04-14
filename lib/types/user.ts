@@ -36,4 +36,10 @@ export interface BlogDetails {
     claps: number;
     created_at: string;
     comments: string[] | null
+    categories: Categories[] | null
+}
+
+export interface Categories {
+    id: string;
+    name: string;
 }
