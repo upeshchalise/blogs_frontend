@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getBlogs } from "@/lib/api/blogs/api";
+import { getBlogs, getCategories } from "@/lib/api/blogs/api";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Clock, Folder } from "lucide-react";
 import Link from "next/link";
-import { BlogDetails } from "@/lib/types/user";
+import { BlogDetails, Categories } from "@/lib/types/user";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import Image from "next/image";
 
 
 export default function Home() {
@@ -15,6 +17,11 @@ export default function Home() {
     queryFn: getBlogs,
   })
 
+
+  const {data: categories, isLoading: categoriesLoading, isError: categoriesError} = useQuery({
+    queryKey: ["categories"],
+    queryFn: getCategories
+  })
   return (
     <>
       <section className="w-full">
@@ -25,6 +32,17 @@ export default function Home() {
           </strong>
           <p>Discover insights, stories, and trends in technology, design, and more.</p>
         </div>
+        <div className="w-3/4 mx-auto p-4">
+        {categoriesLoading ? <p>Loading...</p> : categoriesError ? <p>Error fetching categories</p> : <Carousel>
+          <CarouselContent className="flex gap-4">
+            {categories?.map((category: Categories) => (
+              <CarouselItem key={category.id} className="shadow-sm hover:shadow-xl hover:bg-white max-w-min transition-shadow duration-300 border cursor-pointer px-4 py-2 rounded-md"> {category.name} </CarouselItem>  
+             ))}
+           
+          </CarouselContent>
+        </Carousel>}
+        
+        </div>
         <div>
 
           {isLoading && <p className="text-center">Loading...</p>}
@@ -34,7 +52,7 @@ export default function Home() {
               <Link href={`/blogs/${blog.id}`} key={blog.id}>
                 <Card className="shadow-sm hover:shadow-xl transition-shadow duration-300 !pt-0 !gap-4">
                   <CardContent className="!px-0 flex flex-col gap-4">
-                    <img src={blog.banner ? blog.banner : "/banner.avif"} alt={blog.title} className="w-full h-48 object-cover rounded-t-xl" />
+                    <Image src={blog.banner ? blog.banner : "/banner.avif"} alt={blog.title} className="w-full h-48 object-cover rounded-t-xl" />
                     <div className="px-6">
                       <h2 className="text-xl font-bold line-clamp-2" title={blog.title}>{blog.title}</h2>
                       <p className="text-gray-600 line-clamp-2">{blog.content}</p>

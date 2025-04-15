@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const SignupSchema = z.object({
     first_name: z.string().nonempty("first name is required").min(3, "First name is required"),
@@ -50,7 +51,7 @@ const Signup = () => {
 
             <div className="w-4/5 min-h-fit mx-auto my-auto flex justify-between rounded-2xl shadow-lg bg-white ">
                 <div className="hidden lg:block  w-[40%] rounded-l-2xl">
-                    <img src="/signup.jpg" alt="Signup" className="h-full object-cover rounded-l-xl" />
+                    <Image src="/signup.jpg" alt="Signup" className="h-full object-cover rounded-l-xl" />
                 </div>
                 <div className=" w-full lg:w-[60%] flex flex-col items-center rounded-r-xl py-5">
                     <h3 className="font-semibold text-lg">Create an account</h3>

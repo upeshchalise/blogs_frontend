@@ -20,3 +20,8 @@ export const blogById = async (blogId: string):Promise<BlogDetails> => {
     const {data} = await axiosInstance.get(`/blog/${blogId}`);
     return data
 }
+
+export const getCategories = async () => {
+    const {data} = await axiosInstance.get("/categories");
+    return data
+}

@@ -54,8 +54,8 @@ export const defaultUserState : AuthenticatedUser = {
 //     clearUser: () => set(() => ({ user: defaultUserState }))
 // }))
 
-
-export const useUserStore = create<UserStore>()(persist((set,get) => ({
+// can also add get in persist to get items
+export const useUserStore = create<UserStore>()(persist((set) => ({
     user: defaultUserState,
     setUser: (user: AuthenticatedUser) => set({user}),
     clearUser: () => set(() => ({ user: defaultUserState }))
