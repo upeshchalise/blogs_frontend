@@ -50,8 +50,8 @@ const Signup = () => {
         <section className="w-full h-screen p-0 m-0 flex items-center justify-center">
 
             <div className="w-4/5 min-h-fit mx-auto my-auto flex justify-between rounded-2xl shadow-lg bg-white ">
-                <div className="hidden lg:block  w-[40%] rounded-l-2xl">
-                    <Image src="/signup.jpg" alt="Signup" className="h-full object-cover rounded-l-xl" />
+                <div className="hidden lg:block  w-[40%] rounded-l-2xl relative">
+                    <Image src="/signup.jpg" alt="Signup" style={{objectFit: "cover"}} fill className="rounded-l-2xl"/>
                 </div>
                 <div className=" w-full lg:w-[60%] flex flex-col items-center rounded-r-xl py-5">
                     <h3 className="font-semibold text-lg">Create an account</h3>

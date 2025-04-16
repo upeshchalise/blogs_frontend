@@ -50,9 +50,11 @@ export default function Home() {
           <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-4 p-4 w-3/4 mx-auto">
             {data && data.map((blog: BlogDetails) => (
               <Link href={`/blogs/${blog.id}`} key={blog.id}>
-                <Card className="shadow-sm hover:shadow-xl transition-shadow duration-300 !pt-0 !gap-4">
+                <Card className="shadow-sm hover:shadow-xl transition-shadow duration-300 !pt-0 !gap-4 h-full justify-between">
                   <CardContent className="!px-0 flex flex-col gap-4">
-                    <Image src={blog.banner ? blog.banner : "/banner.avif"} alt={blog.title} className="w-full h-48 object-cover rounded-t-xl" />
+                    <div className="w-full h-48 relative">
+                    <Image fill src={blog.banner ? blog.banner : "/banner.avif"} alt={blog.title}  style={{objectFit: "cover"}} className="rounded-t-xl"/>
+                    </div>
                     <div className="px-6">
                       <h2 className="text-xl font-bold line-clamp-2" title={blog.title}>{blog.title}</h2>
                       <p className="text-gray-600 line-clamp-2">{blog.content}</p>

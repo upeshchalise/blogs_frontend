@@ -24,10 +24,10 @@ export const Header = () => {
                     <li><Link href="/" className="hover:underline">FAQ</Link></li>
                 </ul>
             </nav>
-            <div className="md:hidden block ">
+            <div className="md:hidden block">
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild><Menu/></DropdownMenuTrigger>
-                    <DropdownMenuContent className="py-2 px-4 border-2 border-gray-300 rounded-md !top-10 !-left-10 md:hidden">
+                    <DropdownMenuContent className="py-2 px-4 border-2 border-gray-300 rounded-md !top-10 !-left-10 md:hidden gap-y-2 w-svw" side="bottom" sideOffset={10}>
                     <ul className="text-lg">
                     {/* <li><Link href="/" className="hover:underline"><DropdownMenuItem className="text-base">Home</DropdownMenuItem></Link></li> */}
                     {/* <li><a href="/about" className="hover:underline"><DropdownMenuItem className="text-base">About</DropdownMenuItem></a></li> */}

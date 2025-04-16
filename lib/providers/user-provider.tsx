@@ -5,7 +5,7 @@ import {  useUserStore } from '../stores/user-store';
 const UserStoreProvider = ({ children }:{children: React.ReactNode}) => {
   const { user } = useUserStore();
 
-  console.log("usererre", user)
+  // console.log("usererre", user)
 
   return (
     <div>
