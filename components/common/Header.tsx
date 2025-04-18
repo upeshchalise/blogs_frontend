@@ -21,7 +21,7 @@ export const Header = () => {
                     {/* <li><a href="/about" className="hover:underline">About</a></li> */}
                     <li><Link href="/login" className="hover:underline">Login</Link></li>
                     <li><Link href="/" className="hover:underline">About us</Link></li>
-                    <li><Link href="/" className="hover:underline">FAQ</Link></li>
+                    <li><Link href="/faq" className="hover:underline">FAQ</Link></li>
                 </ul>
             </nav>
             <div className="md:hidden block">
@@ -32,7 +32,7 @@ export const Header = () => {
                     {/* <li><Link href="/" className="hover:underline"><DropdownMenuItem className="text-base">Home</DropdownMenuItem></Link></li> */}
                     {/* <li><a href="/about" className="hover:underline"><DropdownMenuItem className="text-base">About</DropdownMenuItem></a></li> */}
                     <li><Link href="/" className="hover:underline"><DropdownMenuItem className="text-base">About us</DropdownMenuItem></Link></li>
-                    <li><Link href="/" className="hover:underline"><DropdownMenuItem className="text-base">FAQ</DropdownMenuItem></Link></li>
+                    <li><Link href="/faq" className="hover:underline"><DropdownMenuItem className="text-base">FAQ</DropdownMenuItem></Link></li>
                     <li><Link href="/login" className="hover:underline"><DropdownMenuItem className="text-base">Login</DropdownMenuItem></Link></li>
                 </ul>
                     </DropdownMenuContent>
